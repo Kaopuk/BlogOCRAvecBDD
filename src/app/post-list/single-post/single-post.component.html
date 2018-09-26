@@ -1,0 +1,20 @@
+<div class="row" style="padding-bottom:10px;">
+  <div class="col-xs-12" style="margin:10px;">
+    <div class="row" style="border: 3px cadetblue inset;
+                            border-radius: 10px;
+                            box-shadow: 6px 6px 6px darkslategrey;
+                            ">
+      <div class="col-sm-3 hidden-xs" style="margin:20px">
+      <img class="img-rounded" style="max-width: 250px;" *ngIf="post.photo" [src]="post.photo">
+      </div>
+      <div class="col-sm-8 col-xs-12" style="margin:20px">
+        <h1>{{ post.title }}</h1>
+        <blockquote  class="blockquote-reverse text-justify bg-info" *ngIf="post.content">
+          <footer>{{ post.content }}</footer>
+        </blockquote>
+        <footer class="text-warning pull-right">{{ post.author }}</footer>
+        <button class="btn btn-default" (click)="onBack()"><span class="glyphicon glyphicon-step-backward"></span> Retour</button>
+      </div>
+    </div>
+  </div>
+</div>

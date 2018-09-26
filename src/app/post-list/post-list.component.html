@@ -1,0 +1,43 @@
+<div class="row" xmlns="">
+  <div class="col-xs-12">
+    <h2>Les Posts</h2>
+    <div class="list-group" style="border: 3px cadetblue inset;
+                            border-radius: 10px;
+                            box-shadow: 6px 6px 6px darkslategrey;">
+      <button *ngFor="let post of posts; let i = index"
+              (click)="onViewPost(i)"
+
+              [ngClass]="{'list-group-item':true,
+                           'list-group-item-success': post.loveIts > 0,
+                           'list-group-item-danger': post.loveIts < 0}"
+              style="color:black">
+
+        <img class="img-rounded" style="size:auto; width:80px; height:80px;  float:left; margin-right:25px" *ngIf="post.photo" [src]="post.photo">
+        <h3 class="list-group-item-heading">
+          {{ post.title }}
+          <button class="btn btn-default pull-right" (click)="onDeletePost(post)">
+            <span class="glyphicon glyphicon-minus-sign"></span>
+          </button>
+          <p>
+            <small class="text-info center">
+              {{ post.createdAt | date: 'EEEE d MMMM y HH:mm:ss' | uppercase }}
+            </small>
+          </p>
+        </h3>
+
+        <blockquote class="col-xs-10">
+          <p class="list-group-item-text text-justify">{{ post.content.substr(0, 200) }}</p>
+          <em class="center-block" style="color:grey; text-align: end;">...(cliquer pour lire la suite)...</em>
+
+        </blockquote>
+
+        <footer class="text-warning pull-right" style="margin-top: 15px">{{ post.author }}</footer>
+        <button class="btn btn-success btn-sm col-sm-offset-1" (click)="onLove(i)" ><span class=" glyphicon glyphicon-heart">
+        </span> Love it!</button>
+        <button class="btn btn-danger btn-sm" style="margin-left:20px;"(click)="outLove(i)" ><span class="glyphicon glyphicon-heart-empty">
+        </span> Don't Love it!</button>
+      </button>
+    </div>
+  </div>
+</div>
+
